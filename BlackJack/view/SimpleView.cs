@@ -17,6 +17,7 @@ namespace BlackJack.view
 
         public int GetInput()
         {
+            // TODO: Move from controller input HERE!
             return System.Console.In.Read();
         }
 
