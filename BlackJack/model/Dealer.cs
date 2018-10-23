@@ -20,6 +20,7 @@ namespace BlackJack.model
             m_hitRule = a_rulesFactory.GetHitRule();
         }
 
+
         public bool NewGame(Player a_player)
         {
             if (m_deck == null || IsGameOver())
@@ -31,6 +32,7 @@ namespace BlackJack.model
             }
             return false;
         }
+
 
         public bool Hit(Player a_player)
         {
@@ -46,6 +48,26 @@ namespace BlackJack.model
             return false;
         }
 
+
+        public bool Stand()
+        {
+            if(m_deck!= null)
+	        {
+                // TODO: Loop dealer hand?
+		        ShowHand();
+
+		        while(m_hitRule.DoHit(this))
+		        {
+			       Card a_card = m_deck.GetCard();
+                    a_card.Show(true);
+                    DealCard(a_card);
+		        }
+		        return true;
+	        }
+	        return false;
+        }
+
+
         public bool IsDealerWinner(Player a_player)
         {
             if (a_player.CalcScore() > g_maxScore)
@@ -58,6 +80,7 @@ namespace BlackJack.model
             }
             return CalcScore() >= a_player.CalcScore();
         }
+
 
         public bool IsGameOver()
         {

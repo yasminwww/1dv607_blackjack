@@ -7,7 +7,16 @@ namespace BlackJack.controller
 {
     class PlayGame
     {
-        public bool Play(model.Game a_game, view.IView a_view)
+        private model.Game a_game;
+        private view.IView a_view;
+        // TODO: Constructor
+        public PlayGame(model.Game agame, view.IView aview)
+        {
+            this.a_game = agame;
+            this.a_view = aview;
+        }
+        // Todo: BAD, hidden dependency
+        public bool Play()
         {
             a_view.DisplayWelcomeMessage();
             
