@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BlackJack.model
+namespace model
 {
     class Dealer : Player
     {
@@ -13,7 +13,7 @@ namespace BlackJack.model
         private rules.INewGameStrategy m_newGameRule;
         private rules.IHitStrategy m_hitRule;
 
-
+        // Constructor
         public Dealer(rules.RulesFactory a_rulesFactory)
         {
             m_newGameRule = a_rulesFactory.GetNewGameRule();
@@ -51,7 +51,7 @@ namespace BlackJack.model
 
         public bool Stand()
         {
-            if(m_deck!= null)
+            if(m_deck != null)
 	        {
                 // TODO: Loop dealer hand?
 		        ShowHand();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BlackJack.controller
+namespace controller
 {
     class PlayGame
     {
@@ -28,22 +28,22 @@ namespace BlackJack.controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
-            int input = a_view.GetInput();
+            enumtype.InputType input = a_view.GetInput();
 
-            if (input == 'p')
+            if (input == enumtype.InputType.Play)
             {
                 a_game.NewGame();
             }
-            else if (input == 'h')
+            else if (input == enumtype.InputType.Hit)
             {
                 a_game.Hit();
             }
-            else if (input == 's')
+            else if (input == enumtype.InputType.Stand)
             {
                 a_game.Stand();
             }
-
-            return input != 'q';
+            // 
+            return input != enumtype.InputType.Quit;
         }
     }
     // first commit

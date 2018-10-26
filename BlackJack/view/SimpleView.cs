@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BlackJack.view
+namespace view
 {
     class SimpleView : IView
     {
@@ -15,10 +15,27 @@ namespace BlackJack.view
             System.Console.WriteLine("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
-        public int GetInput()
+
+        public enumtype.InputType GetInput()
         {
-            // TODO: Move from controller input HERE!
-            return System.Console.In.Read();
+            string input = Console.ReadLine();
+
+            switch(input) {
+                case "p": 
+                return enumtype.InputType.Play;
+
+                case "h": 
+                return enumtype.InputType.Hit;
+
+                case "s":
+                return enumtype.InputType.Stand;
+
+                case "q":
+                return enumtype.InputType.Quit;
+
+                 default: throw new Exception("Invalid input.");
+            }
+
         }
 
         public void DisplayCard(model.Card a_card)
