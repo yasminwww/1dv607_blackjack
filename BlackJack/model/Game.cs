@@ -7,8 +7,9 @@ namespace model
 {
     class Game
     {
-        private model.Dealer m_dealer;
-        private model.Player m_player;
+        // TODO: change from public to private. Return raadonly.
+        public model.Dealer m_dealer;
+        public model.Player m_player;
 
         public Game()
         {

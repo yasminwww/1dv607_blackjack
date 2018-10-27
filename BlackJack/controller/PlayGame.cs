@@ -5,11 +5,11 @@ using System.Text;
 
 namespace controller
 {
-    class PlayGame
+    class PlayGame : IGamePauser, model.IObservers
     {
         private model.Game a_game;
         private view.IView a_view;
-        
+
         public PlayGame(model.Game agame, view.IView aview)
         {
             this.a_game = agame;
@@ -28,6 +28,8 @@ namespace controller
 
             if (input == enumtype.InputType.Play)
             {
+                a_game.m_player.RegisterSubscriber(this);
+                a_game.m_dealer.RegisterSubscriber(this);
                 a_game.NewGame();
             }
             else if (input == enumtype.InputType.Hit)
@@ -41,10 +43,15 @@ namespace controller
             // 
             return input != enumtype.InputType.Quit;
         }
+        public void PauseGame()
+        {
+            System.Threading.Thread.Sleep(1500);
+        }
+
         public void DisplayGame() 
         {
+            PauseGame();
             a_view.DisplayWelcomeMessage();
-            
             a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         }

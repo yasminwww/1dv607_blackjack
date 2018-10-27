@@ -1,3 +1,5 @@
+using System;
+
 namespace model.rules
 {
     interface IWinnnerStrategy
