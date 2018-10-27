@@ -14,7 +14,6 @@ namespace model
         private rules.IHitStrategy m_hitRule;
         private rules.IWinnnerStrategy m_winRule;
 
-        // Constructor
         public Dealer(rules.RulesFactory a_rulesFactory)
         {
             m_newGameRule = a_rulesFactory.GetNewGameRule();

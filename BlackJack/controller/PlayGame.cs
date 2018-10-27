@@ -9,19 +9,15 @@ namespace controller
     {
         private model.Game a_game;
         private view.IView a_view;
-        // TODO: Constructor
+        
         public PlayGame(model.Game agame, view.IView aview)
         {
             this.a_game = agame;
             this.a_view = aview;
         }
-        // Todo: BAD, hidden dependency
         public bool Play()
         {
-            a_view.DisplayWelcomeMessage();
-            
-            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+            DisplayGame();
 
             if (a_game.IsGameOver())
             {
@@ -44,6 +40,13 @@ namespace controller
             }
             // 
             return input != enumtype.InputType.Quit;
+        }
+        public void DisplayGame() 
+        {
+            a_view.DisplayWelcomeMessage();
+            
+            a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
+            a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         }
     }
 }

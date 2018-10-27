@@ -1,6 +1,6 @@
 namespace model.rules
 {
-    class WinnerStrategy : IWinnnerStrategy
+    class DealerWins : IWinnnerStrategy
     {
 
         public bool IsDealerWinner(Player a_player, Dealer a_dealer, int g_maxScore)
@@ -14,7 +14,7 @@ namespace model.rules
             {
                 return false;
             }
-            return a_dealer.CalcScore() > a_player.CalcScore();
+            return a_dealer.CalcScore() >= a_player.CalcScore();
 
         }
     }
