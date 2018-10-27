@@ -12,12 +12,14 @@ namespace model
 
         private rules.INewGameStrategy m_newGameRule;
         private rules.IHitStrategy m_hitRule;
+        private rules.IWinnnerStrategy m_winRule;
 
         // Constructor
         public Dealer(rules.RulesFactory a_rulesFactory)
         {
             m_newGameRule = a_rulesFactory.GetNewGameRule();
             m_hitRule = a_rulesFactory.GetHitRule();
+            m_winRule = a_rulesFactory.GetWinRule();
         }
 
 
@@ -67,19 +69,11 @@ namespace model
 	        return false;
         }
 
-
         public bool IsDealerWinner(Player a_player)
         {
-            if (a_player.CalcScore() > g_maxScore)
-            {
-                return true;
-            }
-            else if (CalcScore() > g_maxScore)
-            {
-                return false;
-            }
-            return CalcScore() >= a_player.CalcScore();
+            return m_winRule.IsDealerWinner(a_player, this, g_maxScore);
         }
+
 
 
         public bool IsGameOver()

@@ -46,5 +46,4 @@ namespace controller
             return input != enumtype.InputType.Quit;
         }
     }
-    // first commit
 }

@@ -16,5 +16,10 @@ namespace model.rules
         {
             return new AmericanNewGameStrategy();
         }
+
+        public IWinnnerStrategy GetWinRule()
+        {
+            return new WinnerStrategy();
+        }
     }
 }
