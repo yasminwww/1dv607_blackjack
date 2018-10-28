@@ -1,4 +1,4 @@
-namespace enumtype {
+namespace EnumChoise {
 
     public enum InputType {
         Play,

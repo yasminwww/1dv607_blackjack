@@ -16,10 +16,10 @@ namespace model.rules
         {
             return new AmericanNewGameStrategy();
         }
-        // TODO: add PlayerWins(); as choise
+        // TODO: add PlayerWinsStrategy(); as choise
         public IWinnnerStrategy GetWinRule()
         {
-            return new DealerWins();
+            return new DealerWinsStrategy();
         }
     }
 }

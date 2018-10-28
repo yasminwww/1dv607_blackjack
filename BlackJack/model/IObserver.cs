@@ -1,9 +1,9 @@
 namespace model
 {
 
- interface IObservers
+ interface IObserver
  {
-    void DisplayGame();
+    void Update();
  }
 
 

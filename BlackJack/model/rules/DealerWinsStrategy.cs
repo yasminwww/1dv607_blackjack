@@ -1,6 +1,6 @@
 namespace model.rules
 {
-    class DealerWins : IWinnnerStrategy
+    class DealerWinsStrategy : IWinnnerStrategy
     {
 
         public bool IsDealerWinner(Player a_player, Dealer a_dealer, int g_maxScore)

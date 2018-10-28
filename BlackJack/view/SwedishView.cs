@@ -14,22 +14,22 @@ namespace view
             System.Console.WriteLine("----------------------");
             System.Console.WriteLine("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
-        public enumtype.InputType GetInput()
+        public EnumChoise.InputType GetInput()
         {
             string input = Console.ReadLine();
 
             switch(input) {
                 case "p": 
-                return enumtype.InputType.Play;
+                return EnumChoise.InputType.Play;
 
                 case "h": 
-                return enumtype.InputType.Hit;
+                return EnumChoise.InputType.Hit;
 
                 case "s":
-                return enumtype.InputType.Stand;
+                return EnumChoise.InputType.Stand;
 
                 case "q":
-                return enumtype.InputType.Quit;
+                return EnumChoise.InputType.Quit;
 
                  default: throw new Exception("Invalid input.");
             }

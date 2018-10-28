@@ -8,7 +8,7 @@ namespace view
     interface IView
     {
         void DisplayWelcomeMessage();
-        enumtype.InputType GetInput();
+        EnumChoise.InputType GetInput();
         void DisplayCard(model.Card a_card);
         void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score);
         void DisplayDealerHand(IEnumerable<model.Card> a_hand, int a_score);

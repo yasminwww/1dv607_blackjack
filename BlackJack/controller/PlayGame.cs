@@ -5,7 +5,7 @@ using System.Text;
 
 namespace controller
 {
-    class PlayGame : IGamePauser, model.IObservers
+    class PlayGame : IGamePauser, model.IObserver
     {
         private model.Game a_game;
         private view.IView a_view;
@@ -24,24 +24,24 @@ namespace controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
-            enumtype.InputType input = a_view.GetInput();
+            EnumChoise.InputType input = a_view.GetInput();
 
-            if (input == enumtype.InputType.Play)
+            if (input == EnumChoise.InputType.Play)
             {
                 a_game.m_player.RegisterSubscriber(this);
                 a_game.m_dealer.RegisterSubscriber(this);
                 a_game.NewGame();
             }
-            else if (input == enumtype.InputType.Hit)
+            else if (input == EnumChoise.InputType.Hit)
             {
                 a_game.Hit();
             }
-            else if (input == enumtype.InputType.Stand)
+            else if (input == EnumChoise.InputType.Stand)
             {
                 a_game.Stand();
             }
             // 
-            return input != enumtype.InputType.Quit;
+            return input != EnumChoise.InputType.Quit;
         }
         public void PauseGame()
         {
@@ -55,5 +55,11 @@ namespace controller
             a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
             a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
         }
+
+        public void Update() 
+        {
+            DisplayGame();
+        }
+
     }
 }
