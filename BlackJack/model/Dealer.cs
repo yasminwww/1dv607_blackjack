@@ -40,7 +40,6 @@ namespace model
             return false;
         }
 
-
         public bool Hit(Player a_player)
         {
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver())
