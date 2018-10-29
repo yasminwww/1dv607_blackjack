@@ -8,21 +8,19 @@ namespace model.rules
     class InternationalNewGameStrategy : INewGameStrategy
     {
 
+        private void DealCardFromDeck(Deck a_deck, bool show, Player a_player) 
+            {
+                Card c = a_deck.GetCard();
+                c.Show(show);
+                a_player.DealCard(c);
+            }
+        
         public bool NewGame(Deck a_deck, Dealer a_dealer, Player a_player)
         {
-            Card c;
-
-            c = a_deck.GetCard();
-            c.Show(true);
-            a_player.DealCard(c);
-
-            c = a_deck.GetCard();
-            c.Show(true);
-            a_dealer.DealCard(c);
-
-            c = a_deck.GetCard();
-            c.Show(true);
-            a_player.DealCard(c);
+            
+            DealCardFromDeck(a_deck, true,  a_player);
+            DealCardFromDeck(a_deck, true,  a_dealer);
+            DealCardFromDeck(a_deck, true,  a_player);
 
             return true;
         }

@@ -1,6 +1,6 @@
-namespace EnumChoise {
+namespace EnumChoice {
 
-    public enum InputType {
+    public enum GameChoice {
         Play,
         Hit,
         Stand,

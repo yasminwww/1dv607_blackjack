@@ -9,4 +9,5 @@ namespace model.rules
     {
         bool NewGame(Deck a_deck, Dealer a_dealer, Player a_player);
     }
+    
 }

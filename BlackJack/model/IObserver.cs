@@ -1,7 +1,7 @@
 namespace model
 {
 
- interface IObserver
+ interface ICardObserver
  {
     void Update();
  }

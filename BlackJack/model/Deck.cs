@@ -8,6 +8,7 @@ namespace model
     class Deck
     {
         List<Card> m_cards;
+        private static Random rnd = new Random();
 
         public Deck()
         {
@@ -21,7 +22,6 @@ namespace model
                     AddCard(c);
                 }
             }
-
             Shuffle();
         }
 
@@ -44,8 +44,6 @@ namespace model
 
         private void Shuffle()
         {
-            Random rnd = new Random();
-
             for (int i = 0; i < 1017; i++)
             {
                 int index = rnd.Next() % m_cards.Count;

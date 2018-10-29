@@ -8,19 +8,19 @@ namespace model
     class Player
     {
         private List<Card> m_hand = new List<Card>();
-        protected List<IObserver> m_observers = new List<IObserver>();
+        protected List<ICardObserver> m_observers = new List<ICardObserver>();
 
         public void DealCard(Card a_card)
         {
             m_hand.Add(a_card);
             // Notification, notifying the view when card is received.
-            foreach (IObserver subscribers in m_observers)
+            foreach (ICardObserver observer in m_observers)
             {
-                subscribers.Update(/* Displayaskskla*/);
+                observer.Update(/* Display card */);
             }
         }
 
-        public void RegisterSubscriber(IObserver observer)
+        public void RegisterSubscriber(ICardObserver observer)
         {
             m_observers.Add(observer);		
         }

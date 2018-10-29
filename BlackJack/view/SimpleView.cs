@@ -16,22 +16,22 @@ namespace view
         }
 
 
-        public EnumChoise.InputType GetInput()
+        public EnumChoice.GameChoice GetInput()
         {
             string input = Console.ReadLine();
 
             switch(input) {
                 case "p": 
-                return EnumChoise.InputType.Play;
+                return EnumChoice.GameChoice.Play;
 
                 case "h": 
-                return EnumChoise.InputType.Hit;
+                return EnumChoice.GameChoice.Hit;
 
                 case "s":
-                return EnumChoise.InputType.Stand;
+                return EnumChoice.GameChoice.Stand;
 
                 case "q":
-                return EnumChoise.InputType.Quit;
+                return EnumChoice.GameChoice.Quit;
 
                  default: throw new Exception("Invalid input.");
             }

@@ -5,10 +5,11 @@ using System.Text;
 
 namespace controller
 {
-    class PlayGame : IGamePauser, model.IObserver
+    class PlayGame : model.ICardObserver
     {
         private model.Game a_game;
         private view.IView a_view;
+        
 
         public PlayGame(model.Game agame, view.IView aview)
         {
@@ -24,28 +25,28 @@ namespace controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
-            EnumChoise.InputType input = a_view.GetInput();
+            EnumChoice.GameChoice input = a_view.GetInput();
 
-            if (input == EnumChoise.InputType.Play)
+            if (input == EnumChoice.GameChoice.Play)
             {
                 a_game.m_player.RegisterSubscriber(this);
                 a_game.m_dealer.RegisterSubscriber(this);
                 a_game.NewGame();
             }
-            else if (input == EnumChoise.InputType.Hit)
+            else if (input == EnumChoice.GameChoice.Hit)
             {
                 a_game.Hit();
             }
-            else if (input == EnumChoise.InputType.Stand)
+            else if (input == EnumChoice.GameChoice.Stand)
             {
                 a_game.Stand();
             }
             // 
-            return input != EnumChoise.InputType.Quit;
+            return input != EnumChoice.GameChoice.Quit;
         }
         public void PauseGame()
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public void DisplayGame() 

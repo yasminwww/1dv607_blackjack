@@ -9,16 +9,19 @@ namespace model.rules
     {
         public IHitStrategy GetHitRule()
         {
+            // return new BasicHitStrategy();
             return new SoftHitStrategy();
         }
 
         public INewGameStrategy GetNewGameRule()
         {
+            // return new InternationalGameStrategy();
             return new AmericanNewGameStrategy();
         }
-        // TODO: add PlayerWinsStrategy(); as choise
-        public IWinnnerStrategy GetWinRule()
+        
+        public IWinnerStrategy GetWinRule()
         {
+            // return new PlayerWinsStrategy();
             return new DealerWinsStrategy();
         }
     }

@@ -12,7 +12,7 @@ namespace model
 
         private rules.INewGameStrategy m_newGameRule;
         private rules.IHitStrategy m_hitRule;
-        private rules.IWinnnerStrategy m_winRule;
+        private rules.IWinnerStrategy m_winRule;
 
         public Dealer(rules.RulesFactory a_rulesFactory)
         {
@@ -21,12 +21,18 @@ namespace model
             m_winRule = a_rulesFactory.GetWinRule();
         }
 
+        public void DealCardFromDeck(bool show, Player a_player) 
+        {
+            Card c = this.m_deck.GetCard();
+            c.Show(show);
+            a_player.DealCard(c);
+        }
 
         public bool NewGame(Player a_player)
         {
             if (m_deck == null || IsGameOver())
             {
-                m_deck = new Deck();
+                this.m_deck = new Deck();
                 ClearHand();
                 a_player.ClearHand();
                 return m_newGameRule.NewGame(m_deck, this, a_player);   
@@ -39,10 +45,7 @@ namespace model
         {
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver())
             {
-                Card c;
-                c = m_deck.GetCard();
-                c.Show(true);
-                a_player.DealCard(c);
+                this.DealCardFromDeck(true,  a_player);
 
                 return true;
             }
@@ -54,14 +57,11 @@ namespace model
         {
             if(m_deck != null)
 	        {
-                // TODO: Loop dealer hand?
 		        ShowHand();
 
 		        while(m_hitRule.DoHit(this))
 		        {
-			       Card a_card = m_deck.GetCard();
-                    a_card.Show(true);
-                    DealCard(a_card);
+                    this.DealCardFromDeck(true, this);
 		        }
 		        return true;
 	        }

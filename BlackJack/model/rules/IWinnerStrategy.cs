@@ -2,7 +2,7 @@ using System;
 
 namespace model.rules
 {
-    interface IWinnnerStrategy
+    interface IWinnerStrategy
     {
         bool IsDealerWinner(Player a_player, Dealer a_dealer, int g_maxScore);
     }

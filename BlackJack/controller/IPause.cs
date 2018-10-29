@@ -1,10 +1,10 @@
-using System;
-using System.Threading.Tasks;
+// using System;
+// using System.Threading.Tasks;
 
-namespace controller
-{
-    interface IGamePauser
-    {
-        void PauseGame();
-    }
-}
+// namespace controller
+// {
+//     interface IGamePauser
+//     {
+//         void PauseGame();
+//     }
+// }
